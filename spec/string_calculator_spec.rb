@@ -21,5 +21,19 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add('9999')).to eq(9999)
       end
     end
+
+    context 'when there are multiple numbers' do
+      it 'returns 3 when the string contains 1 and 2' do
+        expect(StringCalculator.add('1,2')).to eq(3)
+      end
+
+      it 'returns 10 when the string contains 4 and 6' do
+        expect(StringCalculator.add('4,6')).to eq(10)
+      end
+
+      it 'returns 15 when the string contains 1, 2, 3, 4, and 5' do
+        expect(StringCalculator.add('1,2,3,4,5')).to eq(15)
+      end
+    end
   end
 end
