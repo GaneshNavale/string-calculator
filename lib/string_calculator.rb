@@ -1,6 +1,8 @@
 module StringCalculator
   def self.add(str)
-    0 if str.empty?
-    str.to_i
+    return 0 if str.empty?
+
+    digits = str.split(',').map(&:to_i)
+    sum = digits.reduce {|sum, x| sum += x }
   end
 end
