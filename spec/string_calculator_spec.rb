@@ -63,6 +63,10 @@ RSpec.describe StringCalculator do
       it 'returns 6 when the string contains //:\n1:2:3' do
         expect(StringCalculator.add("//:\n1:2:3")).to eq(6)
       end
+
+      it 'returns 6 when the string contains //:\n1:2\n3' do
+        expect(StringCalculator.add("//:\n1:2\n3")).to eq(6)
+      end
     end
   end
 end
