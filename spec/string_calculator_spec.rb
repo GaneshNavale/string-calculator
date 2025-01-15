@@ -49,5 +49,19 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("1,2\n3,4,5")).to eq(15)
       end
     end
+
+    context 'when there is a custom delimiter' do
+      it 'returns 3 when the string contains //;\n1;2' do
+        expect(StringCalculator.add("//;\n1;2")).to eq(3)
+      end
+
+      it 'returns 6 when the string contains //;\n1;2\n3' do
+        expect(StringCalculator.add("//;\n1;2\n3")).to eq(6)
+      end
+
+      it 'returns 6 when the string contains //:\n1:2:3' do
+        expect(StringCalculator.add("//:\n1:2:3")).to eq(6)
+      end
+    end
   end
 end
