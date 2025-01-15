@@ -5,7 +5,7 @@ String Calculator: A versatile tool that adds numbers in a string, handling cust
 1. [Introduction](#introduction)
 2. [Dependencies](#dependencies)
 3. [Features](#features)
-4. [Method Signature](#method-signature)
+4. [Method Signatures](#method-signatures)
 5. [Usage](#usage)
 6. [Implementation Details](#implementation-details)
 7. [Error Handling](#error-handling)
@@ -47,8 +47,12 @@ To set up the project, ensure the following dependencies are installed:
 - **Ignore Large Numbers**: Ignore numbers larger than 1000 in the sum calculation.
 
 
-## Method Signature
-The add method takes a single argument, str, which is a string containing numbers. The numbers are separated by delimiters, and the method returns the sum of the numbers.
+## Method Signatures
+
+- **add(str)**: Main method that calculates the sum of numbers in the string.
+- **delimiter(str)**: Extracts custom delimiters from the string if specified.
+- **extract_digits(str)**: Parses the string into an array of integers using the detected delimiters.
+- **validate_negatives(digits)**: Ensures no negative numbers are present and raises an exception if found.
 
 ## Usage
 Here are some examples of how to use the String Calculator:
