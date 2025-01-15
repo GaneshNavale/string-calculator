@@ -9,7 +9,7 @@ module StringCalculator
     negatives = digits.select(&:negative?)
     raise "negatives not allowed: #{negatives.join(', ')}" if negatives.any?
 
-    digits.sum
+    digits.reduce(0) { |sum, digit| sum += (digit <= 1000 ? digit : 0) }
   end
 
   def self.delimiter(str)

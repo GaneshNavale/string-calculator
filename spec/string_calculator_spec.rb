@@ -18,8 +18,8 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add('32')).to eq(32)
       end
 
-      it 'returns 9999 when the string contains 9999' do
-        expect(StringCalculator.add('9999')).to eq(9999)
+      it 'returns 1000 when the string contains 1000' do
+        expect(StringCalculator.add('1000')).to eq(1000)
       end
     end
 
@@ -78,6 +78,7 @@ RSpec.describe StringCalculator do
         expect { StringCalculator.add('-1,2,-3') }.to raise_error('negatives not allowed: -1, -3')
       end
     end
+
     it 'ignores numbers greater than 1000' do
       expect(StringCalculator.add('1001,2')).to eq(2)
     end
