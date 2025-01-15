@@ -5,6 +5,10 @@ module StringCalculator
     return 0 if str.empty?
 
     digits = str.split(/\n|#{delimiter(str)}/).map(&:to_i)
+
+    negatiges = digits.select { |x| x.negative? }
+    raise "negatives not allowed: #{negatiges.join(', ')}" if negatiges.any?
+
     digits.reduce { |sum, x| sum + x }
   end
 
