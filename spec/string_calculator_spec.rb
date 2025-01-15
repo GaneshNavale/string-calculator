@@ -84,8 +84,24 @@ RSpec.describe StringCalculator do
     end
 
     context 'when there is a custom delimiter of any length' do
-      it "returns 6 when the string contains //[***]\n1***2***3" do
-        expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
+      context 'when single delimiter' do
+        it "returns 6 when the string contains //[***]\n1***2***3" do
+          expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
+        end
+      end
+
+      context 'when multiple delimiters' do
+        it "returns 6 when the string contains //[*][%]\n1*2%3" do
+          expect(StringCalculator.add("//[*][%]\n1*2%3")).to eq(6)
+        end
+
+        it 'returns 12 when the string contains //[**][%%]\n3**4%%5' do
+          expect(StringCalculator.add("//[**][%%]\n3**4%%5")).to eq(12)
+        end
+
+        it 'returns 6 when the string contains //[**][%%][!!]\n1**2%%3!!4' do
+          expect(StringCalculator.add("//[**][%%][!!]\n1**2%%3!! 4")).to eq(10)
+        end
       end
     end
   end
