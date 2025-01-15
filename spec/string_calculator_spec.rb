@@ -35,5 +35,19 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add('1,2,3,4,5')).to eq(15)
       end
     end
+
+    context 'when there is new line between numbers' do
+      it 'returns 6 when the string contains 1\n2,3' do
+        expect(StringCalculator.add("1\n2,3")).to eq(6)
+      end
+
+      it 'returns 6 when the string contains 1\n2\n3' do
+        expect(StringCalculator.add("1\n2\n3")).to eq(6)
+      end
+
+      it 'returns 15 when the string contains 1,2\n3,4,5' do
+        expect(StringCalculator.add("1,2\n3,4,5")).to eq(15)
+      end
+    end
   end
 end
