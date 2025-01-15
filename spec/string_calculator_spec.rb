@@ -82,5 +82,11 @@ RSpec.describe StringCalculator do
     it 'ignores numbers greater than 1000' do
       expect(StringCalculator.add('1001,2')).to eq(2)
     end
+
+    context 'when there is a custom delimiter of any length' do
+      it "returns 6 when the string contains //[***]\n1***2***3" do
+        expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
+      end
+    end
   end
 end
