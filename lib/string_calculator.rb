@@ -14,16 +14,21 @@ module StringCalculator
 
   def self.delimiter(str)
     if str.start_with?('//')
-      match = str.match(%r{//\[(.*?)\]\n})
-      match ? match[1] : str[2]
+      match = str.match(%r{//(\[.*?\])+\n})
+      if match
+        match[0].scan(/\[(.*?)\]/).flatten
+      else
+        [str[2]]
+      end
     else
-      ','
+      [',']
     end
   end
 
   def self.extract_digits(str)
-    delim = delimiter(str)
+    delims = delimiter(str)
     numbers_str = str.start_with?('//') ? str.split("\n", 2).last : str
-    numbers_str.split(/#{Regexp.escape(delim)}|\n/).map(&:to_i)
+    regex = Regexp.union(delims.map { |delim| delim })
+    numbers_str.split(/#{regex}|\n/).map(&:to_i)
   end
 end
