@@ -13,10 +13,17 @@ module StringCalculator
   end
 
   def self.delimiter(str)
-    str.start_with?('//') ? str[2] : ','
+    if str.start_with?('//')
+      match = str.match(%r{//\[(.*?)\]\n})
+      match ? match[1] : str[2]
+    else
+      ','
+    end
   end
 
   def self.extract_digits(str)
-    str.split(/\n|#{delimiter(str)}/).map(&:to_i)
+    delim = delimiter(str)
+    numbers_str = str.start_with?('//') ? str.split("\n", 2).last : str
+    numbers_str.split(/#{Regexp.escape(delim)}|\n/).map(&:to_i)
   end
 end
